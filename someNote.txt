@@ -1,0 +1,52 @@
+﻿-- 前端
+	MouseEvent属性button值：0左键，1中键，2右键
+
+	报错：[vuex] Do not mutate vuex store state outside mutation handlers.原因及解决方法：
+		this.form = this.$store.state.common.searchFormData;
+	form是检索表单，每次进入页面从vuex中取出进行初始化，但是在搜索表单中进行修改时，控制台报错,
+	报错原因：更改 Vuex 的 store 中的状态的唯一方法是提交 mutation，这是官网原话。意思是state中的值必须在回调函中更改，而我们上边的赋值其实是深度赋值，
+	表单中的值改变会触发vuex中state的值变化，所以才会报此错误。
+	解决方案：
+	1、传入的参数进行处理,即使用
+	this.form=Object.assign({},this.$store.state.common.searchFormData);
+	进行对象的浅拷贝，这样就不会触发vuex中state的值。
+	2、报以上错误是因为开启了严格模式、即strict：true了，所以你可以把这个关闭false即可。
+	注意：生产环境中必须设置strict：false
+
+
+
+-- windows
+	bat命令：
+		taskkill /f /im P210Server802.exe 关闭进程P210Server802.exe
+		start E:\P210Server802.exe 启动进程P210Server802.exe
+		tasklist|find /i "P210Server802.exe" && 存在该进程，操作1 || 不存在该进程，操作2
+		if "%errorlevel%"== 判断之前的结果
+		cd.. 回到上一级目录
+		set "a=%cd%" 设置a为当前目录
+		xcopy a目录 b目录 /e /y /h /i 复制a目录下所有文件到b目录，后面是参数
+		cmd /c 运行命令 这样可以让运行完直接退出dos窗口的命令不会退出
+		robocopy 空目录名 需要删除的目录名 /purge  			该命令本来是复制前一个目录内文件到后一个中，这样写可以复制空的过去，作用等于删除
+	
+-- java
+	jar包中Class.getResource()和ClassLoader.getResource()获取的文件路径会出现问题，jar中资源有其专门的URL形式： jar:!/{entry}，对导致文件路径中会出现
+	FileNotFoundException
+	
+	socket循环发送数据，循环一次发送一次。
+	
+	maven：
+		mvn -X install > test.log或者mvn install -X | tee log.txt ：将maven运行日志输出到文件中
+		
+	tomcat：
+		配置tomcat需要添加两个系统变量CATALINA_BASE和CATALINA_HOME，还有classpath添加路径%CATALINA_HOME%\lib\servlet-api.jar;  path添加路径%CATALINA_HOME%\bin;%CATALINA_HOME%\lib;  通过dos命令startup可查看是否配置成功
+		idea启动tomcat的配置上有个红叉，没有配置artifact
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
