@@ -62,7 +62,12 @@
 -- corba
 	raises(Exception)声明异常
 	
-	
+-- 数据库
+	mysql
+		现在数据库运行show binlog events in 'binlog.000017';
+		然后找info那个列，看到ledscreenshare就停下来，找到begin那行的左边个数字A，和commit那行右边的数字B，
+		然后在mysql/data目录下运行cmd，输入 mysqlbinlog --start-position=A --stop-position=B binlog.000017 > E://test//name.sql
+		然后再开一个cmd登录mysql，命令mysql -uroot -p回车，输入密码，回车，然后输入source e://test//name.sql然后就可以去看数据库有没得数据了
 	
 	
 	
