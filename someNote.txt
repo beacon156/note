@@ -27,11 +27,28 @@
 		cmd /c 运行命令 这样可以让运行完直接退出dos窗口的命令不会退出
 		robocopy 空目录名 需要删除的目录名 /purge  			该命令本来是复制前一个目录内文件到后一个中，这样写可以复制空的过去，作用等于删除
 	
+	ftp服务器搭建教程：https://www.cnblogs.com/popfisher/p/7992036.html
+	
+	vbs打开当前目录的其他文件
+		CreateObject("wscript.shell").Run left(wscript.scriptfullname,instrrev(wscript.scriptfullname,"\")-1) & "\其他文件",0
+	
+	setupfactory
+		脚本方法：https://blog.csdn.net/xuweixiang520/article/details/30457945
+		运行文件Shell.Execute(SessionVar.Expand("%AppFolder%\\hiddenRunKill.vbs"), "open", "", "", SW_SHOWNORMAL);
+		删除文件夹Folder.DeleteTree(SessionVar.Expand("%AppFolder%"), false, false, false, nil);
+	
 -- java
 	jar包中Class.getResource()和ClassLoader.getResource()获取的文件路径会出现问题，jar中资源有其专门的URL形式： jar:!/{entry}，对导致文件路径中会出现
 	FileNotFoundException
-	
+	file.delete()删除失败原因可能是文件输入流未关闭导致
 	socket循环发送数据，循环一次发送一次。
+	replaceAll(regex,replacement)	regex不用加[]，replacement中的特殊字符需要用Matcher.quoteReplacement("$")
+	对于数组来说，for和foreach循环效率差不多，但是对于链表来说，for循环效率明显比foreach低。
+	finally是可以信任的：经过测试，哪怕是发生了OutofMemoryError，finally块中的语句执行也能够得到保证。
+	socket为客户端绑定端口：socket(ip. port)的时候已经随机分配了一个端口，所以再次bind的时候就already bound了。把socket(ip, port)改成 socket()再bind, connect就好了。
+	socket客户端只发送一次消息，要关闭socket，不然服务端会报conneted reset。
+	多module项目要注入其他项目的类时，在启动类注解加上@SpringBootApplictaion（scanBasePackages="com.example"），注入多个项目时包名前面必须要一样com.example
+	idea maven project dependency 红线可能原因是jar包冲突
 	
 	maven：
 		mvn -X install > test.log或者mvn install -X | tee log.txt ：将maven运行日志输出到文件中
@@ -41,6 +58,9 @@
 		idea启动tomcat的配置上有个红叉，没有配置artifact
 	
 	
+	
+-- corba
+	raises(Exception)声明异常
 	
 	
 	
