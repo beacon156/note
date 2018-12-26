@@ -49,7 +49,7 @@
 	socket客户端只发送一次消息，要关闭socket，不然服务端会报conneted reset。
 	多module项目要注入其他项目的类时，在启动类注解加上@SpringBootApplictaion（scanBasePackages="com.example"），注入多个项目时包名前面必须要一样com.example
 	idea maven project dependency 红线可能原因是jar包冲突
-	java concurrent包资料学习https://blog.csdn.net/wbwjx/article/details/57856045
+	java concurrent包资料学习https://blog.csdn.net/defonds/article/details/44021605#t19
 	
 	maven：
 		mvn -X install > test.log或者mvn install -X | tee log.txt ：将maven运行日志输出到文件中
