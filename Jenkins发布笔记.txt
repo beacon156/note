@@ -1,0 +1,56 @@
+基于Linux3.10.0的CentOS系统，Jenkins根据需求需要用到jdk，git，maven。（svn和gradle不知道以后会不会用到）
+
+jdk的安装配置
+  上oracle官网下载jdk，F12获取到包含身份验证的下载路径，命令 （取消身份验证的命令方式已失效）
+    wget 下载路径
+  下载完后解压，
+    tar -zxvf 文件名
+  接着配置jdk环境变量，
+    vim /etc/profile
+  按i进行编辑，esc之后输入 :wq 保存退出，（:w为保存，:q退出，这里直接将maven的配置也加上了，后面就不加了）
+    export JAVA_HOME=/home/jdk1.8.0_161
+    export JRE_HOME=${JAVA_HOME}/jre
+    export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib:$CLASSPATH
+    export JAVA_PATH=${JAVA_HOME}/bin:${JRE_HOME}/bin
+    export PATH=$PATH:${JAVA_PATH}:/usr/local/git/bin:$MAVEN_HOME/bin
+    export MAVEN_HOME=/home/apache-maven-3.6.1
+  先刷新配置
+    source /etc/profile
+  再验证jdk配置
+    javac
+
+maven的安装配置
+  同jdk操作
+
+jenkins安装配置，不使用tomcat
+  这里是使用yum方式安装Jenkins。
+  yum的repos中默认是没有Jenkins的，需要先将Jenkins存储库添加到yum repos。
+    sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+    sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+    yum install jenkins
+  安装中间按下y就行，修改启动用户和端口
+    vim /etc/sysconfig/jenkins
+  修改下面两项，这是修改之后，
+    JENKINS_USER="root"
+    JENKINS_PORT="8081"
+  保存退出后，输入启动命令以启动Jenkins服务
+    service jenkins start
+  显示ok则正常启动。
+  ip:端口进入页面，根据提示去找到密码，然后选左边推荐插件，插件装完新建用户，现在就能正常使用jenkins了。
+  由于要发布项目到远程服务器，先装插件publish over ssh，然后去系统设置添加远程服务器，这里有个注意的地方，系统设置的远程目录是发送文件的根目录，
+  在配置项目的时候的远程目录会在系统设置的目录之下，文件源目录实在Jenkins的工作空间目录下，删除前缀会删除源目录的路径在加到远程目录后。
+  第二个是配置全局工具配置，jdk，git，maven选好目录。
+  最后就可以去新建项目了。
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
