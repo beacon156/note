@@ -2,6 +2,8 @@
 
 jdk的安装配置
   上oracle官网下载jdk，F12获取到包含身份验证的下载路径，命令 （取消身份验证的命令方式已失效）
+  账号：liwei@xiaostudy.com
+  密码：OracleTest1234
     wget 下载路径
   下载完后解压，
     tar -zxvf 文件名
