@@ -1,0 +1,11 @@
+查看java进程：ps -ef|grep java
+杀掉java进程：根据找到的pid：kill -9 pid
+查询文件：find 目录 -name '文件名'
+		  which '文件名'
+传送文件：scp -p ./files/yum.log ip:/tmp/demo/
+截取日志：sed -n '/2018-11-01 09:00:00/,/2018-11-01 10:00:00/'p demo.log > 09-10.log 
+	 sed -n '/2018-11-01 09:00:00/,$p' demo.log > 09-10.log 到现在的
+	 查看日志 前 n行：cat 文件名 | head -n 数量
+	 查看日志 尾 n行：cat 文件名 | tail -n 数量
+	 根据 关键词 查看日志 并返回关键词所在行：方法一：cat 路径/文件名 | grep 关键词; 方法二：grep -i 关键词 路径/文件名
+host文件: vim /etc/hosts

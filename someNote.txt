@@ -73,12 +73,7 @@
 		然后在mysql/data目录下运行cmd，输入 mysqlbinlog --start-position=A --stop-position=B binlog.000017 > E://test//name.sql
 		然后再开一个cmd登录mysql，命令mysql -uroot -p回车，输入密码，回车，然后输入source e://test//name.sql然后就可以去看数据库有没得数据了
 	
--- linux
-	查看java进程：ps -ef|grep java
-	杀掉java进程：根据找到的pid：kill -9 pid
-	查询文件：find 目录 -name '文件名'
-	传送文件：scp -p ./files/yum.log ip:/tmp/demo/
-	截取日志：sed -n '/2018-11-01 09:00:00/,/2018-11-01 10:00:00/'p demo.log > 09-10.log 
-		 sed -n '/2018-11-01 09:00:00/,$p' demo.log > 09-10.log 到现在的
+
+	
 	
 	
