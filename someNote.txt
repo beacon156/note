@@ -73,7 +73,8 @@
 		然后在mysql/data目录下运行cmd，输入 mysqlbinlog --start-position=A --stop-position=B binlog.000017 > E://test//name.sql
 		然后再开一个cmd登录mysql，命令mysql -uroot -p回车，输入密码，回车，然后输入source e://test//name.sql然后就可以去看数据库有没得数据了
 	
-
+-- git 
+	修改远程仓库 git remote set-url origin [url]
 	
 	
 	
