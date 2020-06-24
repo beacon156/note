@@ -1,0 +1,9 @@
+新建一个文本文档保存为reg文件,拷贝如下内容并替换相关路径并保存,双击运行加入注册表。
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\NotePad++]
+@="&Notepad++"
+"Icon"="D:\\Program Files (x86)\\Notepad++\\Notepad++.exe"
+
+[HKEY_CLASSES_ROOT\*\shell\NotePad++\Command]
+@="D:\\Program Files (x86)\\Notepad++\\Notepad++.exe \"%1\""
