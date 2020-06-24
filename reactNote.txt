@@ -1,4 +1,4 @@
-react实现websocket
+﻿react实现websocket
 	安装依赖
 		cnpm install --save react-websocket
 	先新建一个组件
@@ -44,7 +44,7 @@ react实现websocket
 		export default ReactWebsocket;
 	直接使用组件
 		<ReactWebsocket 
-		  url='ws://localhost:8080/websocket/1' 
+		  url='ws://localhost:8080/websocket/1' // 如果是https的话需要改为wss开头
 		  onMessage={this.onMessage} //接受信息的回调
 		  onOpen={this.onOpen} //websocket打开
 		  onClose={this.onClose} //websocket关闭

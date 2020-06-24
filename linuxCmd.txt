@@ -1,4 +1,4 @@
-查看java进程：ps -ef|grep java
+﻿查看java进程：ps -ef|grep java
 杀掉java进程：根据找到的pid：kill -9 pid
 查询文件：find 目录 -name '文件名'
 		  which '文件名'
@@ -9,3 +9,28 @@
 	 查看日志 尾 n行：cat 文件名 | tail -n 数量
 	 根据 关键词 查看日志 并返回关键词所在行：方法一：cat 路径/文件名 | grep 关键词; 方法二：grep -i 关键词 路径/文件名
 host文件: vim /etc/hosts
+
+docker: 
+	安装: docker pull 应用:latest(latest是默认值,可以不要)
+	查看运行状态: docker ps
+	停止: docker stop id/name
+	删除容器: docker rm id/name	
+	进入容器: docker exec -it id/name/bin/bash
+
+docker安装gitlab:
+	拉取镜像: docker pull gitlab/gitlab-ce:latest
+	运行: 
+ 		docker run --name='gitlab' -d \
+		--net=gitlab_net \
+		--publish 1443:443 --publish 18080:80 \
+		--restart always \
+		--volume /root/docker/gitlab/config:/etc/gitlab \
+		--volume /root/docker/gitlab/logs:/var/log/gitlab \
+		--volume /root/docker/gitlab/data:/var/opt/gitlab \
+		--privileged=true \
+		gitlab/gitlab-ce:latest
+	配置: vim /root/docker/gitlab/config/gitlab.rb (也可以在容器内修改)
+		 添加配置: external_url 'http://139.9.50.28:18080'
+	重启容器: docker restart gitlab
+	gitlab重启命令: gitlab-ctl restart
+
