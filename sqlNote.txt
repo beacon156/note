@@ -1,0 +1,17 @@
+﻿刷数据：update tm_product_sale_2019_9_17 a ,tm_product_contrast b set a.old_code=b.old_code where a.PRODUCT_SALE_CODE = b.new_code
+查询该表被外键的情况：
+	select
+		TABLE_NAME,COLUMN_NAME,CONSTRAINT_NAME, REFERENCED_TABLE_NAME,REFERENCED_COLUMN_NAME
+	from INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+	where CONSTRAINT_SCHEMA ='database1' AND REFERENCED_TABLE_NAME = 'user1';
+查询并杀死事务：select * from information_schema.innodb_trx; kill 70033(trx_mysql_thread)
+查询根据时间累计数据:
+	SELECT aa.日期, aa.数值, SUM(lj.数值) AS 累计 
+	FROM tb lj INNER JOIN
+	(SELECT *    FROM tb) aa ON lj.日期 <= aa.日期
+	WHERE (aa.日期 <= '2005-05-04')   
+	GROUP BY aa.日期, aa.数值
+	ORDER BY aa.日期
+
+pgsql: 分组并排序取最大最小值sql:	select row_number() over (partition by 分组字段1,分组字段2 order by 排序字段1,排序字段2) as 顺序序列,查询字段1,查询字段2... from 表
+	select row_number() over (partition by client_id, provider_id order by order_time) as rn(顺序序列),id,order_time,client_id, provider_id from t_order
