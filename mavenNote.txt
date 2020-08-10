@@ -1,3 +1,25 @@
-1.mvn clean package和mvn clean install的区别是,install会先执行package打包,然后会将jar安装到maven本地仓库,以供其他maven项目使用.
+﻿1.mvn clean package和mvn clean install的区别是,install会先执行package打包,然后会将jar安装到maven本地仓库,以供其他maven项目使用.
 2.mvn clean compile,mvn clean test,mvn clean package,mvn clean install,后面的操作均会执行之前的操作.
 3.对于j2se项目,需要shade插件打包,指定程序入口mainClass,这样才是可执行jar包.
+4.依赖范围scope:
+	compile: 编译依赖范围,默认值,3种classpath均有效.
+	test: 测试依赖范围,只对于测试classpath有效.
+	provided: 已提供依赖范围,编译和测试时有效,运行时无效.例如servlet-api,编译和测试时需要,但在运行时是容器提供依赖,就不用了.
+	runtime: 运行时依赖范围,测试和运行时有效,编译时无效.例如JDBC驱动实现,在编译时只用提供接口,在实际运行时才需要实现接口的驱动.
+	system: 和provided范围一样,但是需要使用systemPath显式指定依赖路径,可能造成不可移植,所以谨慎使用.systemPath可以使用环境变量,例如<systemPath>${java.home}/lib/rt.jar</systemPath>
+	import: 导入依赖范围,三种classpath均不影响.
+5.依赖调解: 对于重复依赖的问题
+	第一原则: 路径最近者优先;
+	第二原则: 第一声明者优先;
+6.可选依赖: <optional>例如,有一个多数据源持久化工具包,但实际只会用到一个数据源,这时候的多个驱动依赖就加入这个元素,再其他项目依赖这个项目时,就只用声明其中一个依赖.但是这个元素违反了单一职责原则,所以尽量不使用,应该例子应该改为使用多个项目单独声明数据源.
+7.排除依赖: <exclusions><exclusion></exclusion>...</exclusions>
+8.归类依赖: 将依赖的版本定义为<properties>,然后在使用<version>${spring.version}</version>的方式传值.
+9.查看当前项目已解析的依赖: mvn dependency:list
+	查看当前项目已解析的依赖树: mvn dependency:tree
+	分析依赖情况: mvn dependency:analyze
+10.mvn clean deploy将依赖部署到远程仓库
+11.mvn clean install -U参数为强制更新
+12.生命周期:包含了项目的清理、初始化、编译、测试、打包、集成测试、验证、部署和站点生成等等。
+	三套生命周期：clean（清理项目）、default（构建项目）、site（生成站点）
+	
+		
