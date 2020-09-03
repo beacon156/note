@@ -75,6 +75,8 @@
 	
 -- git 
 	修改远程仓库 git remote set-url origin [url]
+	撤回commit到本地仓库：git reset --soft HEAD~1
+
 	
 	
 	
