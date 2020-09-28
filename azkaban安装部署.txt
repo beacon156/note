@@ -1,0 +1,7 @@
+1.下载源码
+2.编译打包./gradlew build -x test
+3.复制安装包azkaban-exec-server、azkaban-web-server、azkaban-db下目录/build/distributions/到安装目录
+4.解压三个安装包，新建数据库azkaban，根据情况是否创建个新用户来用，运行db里面的create-all-sql
+5.先找个模块里有conf包的，修改azkaban.properties配置文件，主要是时区和mysql配置，然后复制conf/包到exec和web目录下
+6.在exec和web目录下创建logs目录，然后分别在同步录下执行命令 bin/start-模块.sh
+7.访问管理页面ip:8081/azkaban 默认账号密码azkaban/azkaban
