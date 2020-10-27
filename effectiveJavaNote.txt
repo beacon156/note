@@ -1,0 +1,13 @@
+1.装饰器模式：比如组合，ForwardingSet实现Set，组合一个Set属性，InstrumentedSet继承ForwardingSet.InstrumentedSet则被称为包装类
+	public class ForwardingSet<E> implements Set<E> {
+	    private final Set<E> s;
+		...
+	}
+	public class InstrumentedSet<E> extends ForwardingSet<E> {
+		private int addCount = 0;
+		...
+	}
+2.测试为继承而设计的类的唯一方法是编写子类。 通常3个子类足以测试一个可继承的类。构造方法绝不能直接或者间接的调用可重写的方法。
+3.常量接口是对接口的糟糕使用。
+4.如果你声明了一个不需要访问宿主实例的成员类，总是把 static 修饰符放在它的声明中，使它成为一个静态成员 类，而不是非静态的成员类。如果你忽略了这个修饰符，每个实例都会有一个隐藏的外部引用给它的宿主实例。 
+	如果一个嵌套的类需要在一个方法之外可见，或者太长 而不能很好地适应一个方法，使用一个成员类。 如果一个成员类的每个实例都需要一个对其宿主实例的引用，使其 成为非静态的; 否则，使其静态。 假设这个类属于一个方法内部，如果你只需要从一个地方创建实例，并且存在一个 预置类型来说明这个类的特征，那么把它作为一个匿名类；否则，把它变成局部类。

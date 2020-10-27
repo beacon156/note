@@ -60,7 +60,10 @@
 	tomcat：
 		配置tomcat需要添加两个系统变量CATALINA_BASE和CATALINA_HOME，还有classpath添加路径%CATALINA_HOME%\lib\servlet-api.jar;  path添加路径%CATALINA_HOME%\bin;%CATALINA_HOME%\lib;  通过dos命令startup可查看是否配置成功
 		idea启动tomcat的配置上有个红叉，没有配置artifact
-	
+	BufferedReader和BufferedWriter乱码问题，需要中间加一层转换流，即：
+		BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(filePath)),"utf-8"));
+		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(filePath)),"utf-8"));
+
 	
 	
 -- corba
