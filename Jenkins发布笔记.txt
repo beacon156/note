@@ -23,6 +23,16 @@ jdk的安装配置
 
 maven的安装配置
   同jdk操作
+  
+git的安装
+  wget https://github.com/git/git/archive/v2.17.0.tar.gz;(自己找最新的版本)
+  tar -zxvf v2.17.0.tar.gz 
+  依赖yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeMaker
+  安装依赖时，yum自动安装了Git，需要卸载旧版本Git：yum remove git
+  cd git-2.17.0
+  编译 make prefix=/usr/local/git all
+  安装 make prefix=/usr/local/git install
+  vim /etc/profile 在PATH后面加上:/usr/local/git/bin
 
 jenkins安装配置，不使用tomcat
   这里是使用yum方式安装Jenkins。

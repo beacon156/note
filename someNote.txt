@@ -76,7 +76,10 @@
 -- git 
 	修改远程仓库 git remote set-url origin [url]
 	撤回commit到本地仓库：git reset --soft HEAD~1
-
+	撤回push到远程仓库(用于撤销最新的提交)：git reset --hard commit_id（上一个版本）;
+			git push --force;
+	设置全局账号：git config --global credential.helper store；后面再执行一次命令，输入账号密码，之后的操作就不用每次输入帐号密码了
+	切换本地没有的分支：git checkout -b 本地分支名x origin/远程分支名x
 	
 	
 	
