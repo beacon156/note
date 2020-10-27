@@ -55,7 +55,7 @@
 		  }}
 		/>
 
-
+2.npm install的时候，如果node-sass安装失败，检查node-sass和node版本是否一致,不一致会导致安装失败。
 
 	
 	
