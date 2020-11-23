@@ -56,3 +56,5 @@
 		mvn clean deploy site-deploy: 调用clean生命周期的clean阶段，default的deploy阶段，以及site的site-deploy阶段，实际执行pre-clean、clean、default所有阶段、site所有阶段。
 13.继承
 	可继承的元素：groupId,version,description,properties,dependencies,dependencyManagement,repositories,build(仅列举了一些常用的)
+14.多模块指定模块打包
+	mvn clean install -pl 模块名，多个用“，”分隔 -am
