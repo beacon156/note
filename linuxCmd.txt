@@ -35,3 +35,7 @@ docker安装gitlab:
 	重启容器: docker restart gitlab
 	gitlab重启命令: gitlab-ctl restart
 
+vim替换：  :%s/foo/bar/g   %s代表全局搜索,foo是被替换的字符串，bar是要替换的字符串，g是全局替换
+tar解压tar.gz：tar -zxvf 名称.tar.gz
+
+

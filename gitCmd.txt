@@ -5,3 +5,7 @@
 			git push --force;
 	设置全局账号：git config --global credential.helper store；后面再执行一次命令，输入账号密码，之后的操作就不用每次输入帐号密码了
 	切换本地没有的分支：git checkout -b 本地分支名x origin/远程分支名x
+	
+	把本地项目推到远程新项目：
+		1.先在远程建项目，添加readme文件，创建dev分支，再添加.gitignore文件
+		2.本地，git init; git remote add origin 项目地址； git checkout -b dev; git branch --set-upstream-to=origin/dev dev; git pull;
