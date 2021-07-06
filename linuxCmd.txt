@@ -45,3 +45,9 @@ scp安全拷贝：-r(递归)
 rsync远程同步工具：(用于备份和镜像，只对差异文件做更新，比scp快)
 	rsync -av 要拷贝的目录/名称 $user@$host:目录/名称
 xsync集群分发
+
+ssh免密登录：
+	在ssh访问后会在用户根目录生成隐藏文件夹.ssh
+	cd .ssh
+	ssh-keygen -t rsa
+	ssh-copy-id 服务器
