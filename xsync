@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]
+then 
+	echo Not Enough Arguement!
+	exit;
+fi
+
+for host in hadoop100 hadoop101 hadoop102
+do 
+	echo ================== $host =====================
+	for file in $@
+	do 
+		if [ -e $file ]
+			then 
+				#获取父目录
+				pdir=$(cd -P $(dirname $file); pwd)
+				#获取当前文件的名称
+				fname=$(basename $file)
+				ssh $host "mkdir -p $pdir"
+				rsync -av $pdir/$fname $host:$pdir
+			else 
+				echo $file does not exists!
+		fi
+	done
+done
