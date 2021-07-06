@@ -38,4 +38,10 @@ docker安装gitlab:
 vim替换：  :%s/foo/bar/g   %s代表全局搜索,foo是被替换的字符串，bar是要替换的字符串，g是全局替换
 tar解压tar.gz：tar -zxvf 名称.tar.gz
 
-
+scp安全拷贝：-r(递归)
+	推数据：scp -r 要拷贝的目录/名称 $user@$host:目录/名称
+	拉数据：scp -r $user@$host:要拷贝的目录/名称 目录/名称
+	可在其他服务器复制：scp -r $user@$host:要拷贝的目录/名称 $user@$host:目录/名称
+rsync远程同步工具：(用于备份和镜像，只对差异文件做更新，比scp快)
+	rsync -av 要拷贝的目录/名称 $user@$host:目录/名称
+xsync集群分发
